@@ -4,7 +4,8 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
-class settings extends Model
+class Settings extends Model
 {
-    protected $fillable = ['title','description','logo','phone','instagram'];
+    protected $fillable = ['title' ,'description','logo' ,'phone' ,'instagram', ];
+
 }

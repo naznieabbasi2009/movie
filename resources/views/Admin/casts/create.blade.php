@@ -1,33 +1,84 @@
-@extends("Admin.layouts.master")
-@section("content")
-    <!-- Basic Bootstrap Table -->
-    <div class="card">
 
-        <h5 class="card-header  w-30 mx-auto text-dark" > فرم افزودن  </h5>
-        <form action="{{route('casts.store')}}" method="post" enctype="multipart/form-data">
-            <div class="mb-3">
-                <label>نام و نام خانوادگی</label>
-                <input type="text" name="full_name" class="form-control">
+@extends('Admin.layouts.master')
+
+
+@section('content')
+
+
+    <!-- Browser Default -->
+    <div class="col-md mb-4 mb-md-0">
+        <div class="card">
+            <h5 class="card-header">   افزودن   </h5>
+            <div class="card-body">
+                <form class="browser-default-validation" action="{{route('casts.store')}}"  enctype="multipart/form-data" method="post">
+                    @method('POST')
+                    <div class="mb-3">
+                        <label class="form-label" for="basic-default-name">اسم   </label>
+                        <input
+                            name="full_name"
+                            type="text"
+                            class="form-control"
+                            id="basic-default-name"
+                            placeholder="عنوان را وارد کنید "
+                            required />
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label" for="basic-default-name">عکس   </label>
+                        <input
+                            name="image"
+                            type="file"
+                            class="form-control"
+                            id="basic-default-name"
+                            placeholder="عنوان را وارد کنید "
+                            required />
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label" for="basic-default-bio">توضیحات</label>
+                        <textarea
+                            class="form-control"
+                            id="basic-default-bio"
+                            name="description"
+                            rows="3"
+                            required></textarea>
+                    </div>
+
+                    <div class="mb-3">
+                        <label class="d-block form-label">نقش</label>
+                        <div class="form-check mb-2">
+                            <input
+                                name="role"
+                                type="radio"
+                                value="actor"
+                                id="basic-default-radio-male"
+                                class="form-check-input"
+                                required
+                                checked />
+                            <label class="form-check-label" for="basic-default-radio-male">بازیگر </label>
+                        </div>
+                        <div class="form-check">
+                            <input
+                                type="radio"
+                                id="basic-default-radio-female"
+                                name="role"
+                                value="director"
+                                class="form-check-input"
+                                required />
+                            <label class="form-check-label" for="basic-default-radio-female">کارگردان </label>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-12">
+                            <button type="submit" class="btn btn-primary">ارسال</button>
+                        </div>
+                    </div>
+                </form>
             </div>
-            <div class="mb-3">
-                <label>عکس</label>
-                <input type="file" name="image" class="form-control">
-            </div>
-            <div class="mb-3">
-                <label>توضیحات</label>
-                <input type="text" name="description" class="form-control">
-            </div>
-            <div class="mb-3">
-                <label>نقش</label>
-                <select name="role" class="form-control">
-                    <option value="actor">بازیگر</option>
-                    <option value="director">کارگردان</option>
-                </select>
-            </div>
-            <button type="submit" class="btn btn-danger">افزودن </button>
-        </form>
+        </div>
     </div>
-    <!--/ Basic Bootstrap Table -->
+    <!-- /Browser Default -->
 
-    <hr class="my-5" />
+
+
+
 @endsection
