@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\Admin\castController;
 use App\Http\Controllers\Admin\MovieController;
+use App\Http\Controllers\Admin\NewsController;
 use App\Http\Controllers\Admin\settingsController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
@@ -55,6 +56,7 @@ Route::resource('/Admin/CategoryNews' , categoryNewsController::class);
 Route::resource('/Admin/casts' , castController::class);
 Route::resource('/Admin/settings' , settingsController::class);
 Route::resource('/Admin/movies' , MovieController::class)->names("movie");
+Route::resource('/Admin/news' , NewsController::class)->names("news");
 
 
 //Route::post('/categoryMovie', [categoryMovieController::class, 'store'])->name('store');
