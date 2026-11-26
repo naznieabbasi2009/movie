@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Admin\castController;
+use App\Http\Controllers\Admin\CollectionController;
 use App\Http\Controllers\Admin\MovieController;
 use App\Http\Controllers\Admin\NewsController;
 use App\Http\Controllers\Admin\settingsController;
@@ -51,13 +52,13 @@ Route::get('/create', function () {
 //Route::get('/update', function () {
 //    return view('Admin.CategoryMovie.edit');
 //})->name('update');
-Route::resource('/Admin/CategoryMovie' , categoryMovieController::class);
-Route::resource('/Admin/CategoryNews' , categoryNewsController::class);
-Route::resource('/Admin/casts' , castController::class);
-Route::resource('/Admin/settings' , settingsController::class);
+Route::resource('/Admin/CategoryMovie' , categoryMovieController::class)->names("CategoryMovie");
+Route::resource('/Admin/CategoryNews' , categoryNewsController::class)->names("CategoryNews");
+Route::resource('/Admin/casts' , castController::class)->names("casts");
+Route::resource('/Admin/settings' , settingsController::class)->names("settings");
 Route::resource('/Admin/movies' , MovieController::class)->names("movie");
 Route::resource('/Admin/news' , NewsController::class)->names("news");
-
+Route::resource('/Admin/collection', CollectionController::class)->names('collection');
 
 //Route::post('/categoryMovie', [categoryMovieController::class, 'store'])->name('store');
 //Route::get('/dashboard2' , function (){
@@ -68,6 +69,7 @@ Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
+
 });
 
 require __DIR__.'/auth.php';

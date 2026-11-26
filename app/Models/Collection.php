@@ -6,5 +6,10 @@ use Illuminate\Database\Eloquent\Model;
 
 class Collection extends Model
 {
-    //
+    protected $fillable = ['title' , 'movie_id' , "image" ];
+
+    public function movies()
+    {
+        return $this->belongsTo(Movie::class, 'Movie.id');
+    }
 }

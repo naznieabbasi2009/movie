@@ -1,9 +1,14 @@
 @extends("Admin.layouts.master")
+
+
 @section("content")
+
+
+
     <div class="card">
         <div class="d-flex justify-content-between align-items-center card-header">
             <h5 class="mb-0">فیلم‌ها</h5>
-            <a href="{{ route('movies.create') }}" class="btn btn-primary">
+            <a href="{{ route('Movie.create') }}" class="btn btn-primary">
                 <i class="ti ti-plus me-1"></i> افزودن فیلم
             </a>
         </div>
@@ -19,11 +24,9 @@
                     <th>پوستر</th>
                     <th>عنوان</th>
                     <th>دسته بندی</th>
-                    <th>توضیحات</th>
                     <th>سال</th>
                     <th>کشور</th>
                     <th>IMDb</th>
-                    <th>محتوا</th>
                     <th>وضعیت</th>
                     <th>عملیات</th>
                 </tr>
@@ -35,7 +38,7 @@
                             @if($movie->poster)
                                 <img src="{{ asset('storage/' . $movie->poster) }}"
                                      alt="{{ $movie->title }}"
-                                     width="130" height="160" style="object-fit: cover;" />
+                                     width="50" height="70" style="object-fit: cover;" />
                             @else
                                 <img src="{{ asset('storage/movies/images.png') }}"
                                      alt="بدون پوستر"
@@ -44,11 +47,9 @@
                         </td>
                         <td><span class="fw-medium">{{ $movie->title }}</span></td>
                         <td>{{ $movie->category->name ?? '—' }}</td>
-                        <td>{{ $movie->description }}</td>
                         <td>{{ $movie->year }}</td>
                         <td>{{ $movie->country }}</td>
                         <td><span class="badge bg-label-warning">{{ $movie->imdb }}</span></td>
-                        <td style="max-width: 600px; font-size: 12px" class="text-center align-middle text-wrap" >{{ $movie->content }}</td>
                         <td>
                             @if($movie->status)
                                 <span class="badge bg-label-success">فعال</span>
@@ -85,6 +86,8 @@
             </table>
         </div>
 
-
+        <div class="p-3">
+            {{ $movies->links() }}
+        </div>
     </div>
 @endsection

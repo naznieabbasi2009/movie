@@ -9,16 +9,18 @@
         <!-- Content -->
 
         <div class="container-xxl flex-grow-1 container-p-y">
-            <h4 class="py-3 mb-4"><span class="text-muted fw-light">جدول /</span> جداول پایه</h4>
-            <h4 class="py-3 mb-4"><a href="{{route('insert3')}}" class="text-muted fw-light">افزودن /</a> دسته بندی فیلم </h4>
+            <h4 class="py-3 mb-4"><span class="text-muted fw-light">جدول</span> اخبار </h4>
             <!-- Basic Bootstrap Table -->
             <div class="card">
-                <h5 class="card-header"> جدول پایه</h5>
+                <h5 class="card-header"> جدول اخبار</h5>
+                <a href="{{ route('CategoryNews.create') }}" class="btn btn-primary" style="width: 200px;">
+                    <i class="ti ti-plus me-1"></i> افزودن اخبار
+                </a>
                 <div class="table-responsive text-nowrap">
                     <table class="table">
                         <thead>
                         <tr>
-                            <th> title</th>
+                            <th> عنوان</th>
                             <th>وضعیت</th>
                             <th>توضیحات</th>
                             <th>اقدامات</th>

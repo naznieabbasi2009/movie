@@ -21,7 +21,6 @@
                     <th>دسته‌بندی</th>
                     <th>نویسنده</th>
                     <th>وضعیت</th>
-                    <th>تاریخ</th>
                     <th>عملیات</th>
                 </tr>
             </thead>
@@ -41,7 +40,7 @@
                     </td>
                     <td><span class="fw-medium">{{ $item->title }}</span></td>
                     <td>{{ $item->category->title ?? '—' }}</td>
-                    <td>{{ $item->admin->full_name ?? $item->admin->name ?? '—' }}</td>
+                    <td>{{ $item->Admin->fullname ?? $item->Admin->name ?? '—' }}</td>
                     <td>
                         @if($item->status)
                             <span class="badge bg-label-success">فعال</span>
@@ -49,7 +48,6 @@
                             <span class="badge bg-label-danger">غیرفعال</span>
                         @endif
                     </td>
-                    <td>{{ $item->created_at->format('Y/m/d') }}</td>
                     <td>
                         <div class="dropdown">
                             <button type="button" class="btn p-0 dropdown-toggle hide-arrow" data-bs-toggle="dropdown">

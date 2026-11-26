@@ -9,11 +9,13 @@
         <!-- Content -->
 
         <div class="container-xxl flex-grow-1 container-p-y">
-            <h4 class="py-3 mb-4"><span class="text-muted fw-light">جدول /</span> جداول پایه</h4>
-            <h4 class="py-3 mb-4"><a href="{{route('insert2')}}" class="text-muted fw-light">افزودن /</a> دسته بندی  </h4>
-            <!-- Basic Bootstrap Table -->
+            <h4 class="py-3 mb-4"><span class="text-muted fw-light">جدول</span> گروه بازیگران</h4>
+          <!-- Basic Bootstrap Table -->
             <div class="card">
-                <h5 class="card-header"> جدول پایه</h5>
+                <h5 class="card-header"> جدول اول </h5>
+                <a href="{{ route('casts.create') }}" class="btn btn-primary" style="width: 200px;">
+                    <i class="ti ti-plus me-1"></i> افزودن بازیگران
+                </a>
                 <div class="table-responsive text-nowrap">
                     <table class="table">
                         <thead>
