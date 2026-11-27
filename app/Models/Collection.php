@@ -10,6 +10,6 @@ class Collection extends Model
 
     public function movies()
     {
-        return $this->belongsTo(Movie::class, 'Movie.id');
+        return $this->belongsTo(Movie::class, 'movie_id');
     }
 }

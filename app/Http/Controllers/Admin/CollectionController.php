@@ -19,8 +19,8 @@ class CollectionController extends Controller
      */
     public function index()
     {
-        $collections = Collection::with('movie');
-        return view("Admin.collection.index" , compact('collections'));
+        $colletions=collection::all();
+        return view("Admin.collection.index" , compact('colletions'));
     }
 
     /**
@@ -40,11 +40,13 @@ class CollectionController extends Controller
         $validated = $request->validate([
             'title' => ['required' , 'min:3'],
             'movie_id' => ['required'],
-            'poster' => ['mimes:jpg,jpeg,png','nullable'],
+            'image'=>['required' , 'image' , 'mimes:jpeg,png,jpg,gif,svg'],
         ]);
 
-        $path=$request->file('image')->store('image' , 'public');
-
+        $path = null;
+        if ($request->hasFile('image')) {
+            $path = $request->file('image')->store('image_collection', 'public');
+        }
         Collection::create([
             'title' => $validated['title'] ,
             'movie_id' => $validated['movie_id'] ,
@@ -69,8 +71,8 @@ class CollectionController extends Controller
     public function edit(string $id)
     {
         $movies = CategoryMovie::all();
-        $collection = Collection::findOrFail($id);
-        return view("Admin.collection.edit" , compact(['collection' , 'movies']));
+        $collections = Collection::findOrFail($id);
+        return view("Admin.collection.edit" , compact(['collections' , 'movies']));
     }
 
     /**
@@ -78,7 +80,7 @@ class CollectionController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        $collection = Collection::findOrFail($id);
+        $collections = Collection::findOrFail($id);
         $validated = $request->validate([
             'title' => ['required' , 'min:3'],
             'movie_id' => ['required'],
@@ -90,7 +92,7 @@ class CollectionController extends Controller
         }else{
             $validated["image"]="";
         }
-        $collection->update($validated);
+        $collections->update($validated);
         return redirect('Admin/collection/')->with('status', 'با موفقیت ویرایش شد.');
     }
 
@@ -99,12 +101,12 @@ class CollectionController extends Controller
      */
     public function destroy(string $id)
     {
-        $Collection= collection::findOrFail($id);
-        if ($Collection->image && Storage::disk('public')->exists($Collection->image)) {
-            Storage::disk('public')->delete($Collection->image);
+        $Collections= collection::findOrFail($id);
+        if ($Collections->image && Storage::disk('public')->exists($Collections->image)) {
+            Storage::disk('public')->delete($Collections->image);
         }
 
-        $Collection->delete();
+        $Collections->delete();
         return redirect('Admin/collection/')->with('status', 'با موفقیت ویرایش شد.');
     }
 }

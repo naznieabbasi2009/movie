@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\Admin\castController;
 use App\Http\Controllers\Admin\CollectionController;
+use App\Http\Controllers\Admin\GalleryController;
 use App\Http\Controllers\Admin\MovieController;
 use App\Http\Controllers\Admin\NewsController;
 use App\Http\Controllers\Admin\settingsController;
@@ -59,6 +60,7 @@ Route::resource('/Admin/settings' , settingsController::class)->names("settings"
 Route::resource('/Admin/movies' , MovieController::class)->names("movie");
 Route::resource('/Admin/news' , NewsController::class)->names("news");
 Route::resource('/Admin/collection', CollectionController::class)->names('collection');
+Route::resource('/Admin/gallery', GalleryController::class)->names('gallery');
 
 //Route::post('/categoryMovie', [categoryMovieController::class, 'store'])->name('store');
 //Route::get('/dashboard2' , function (){

@@ -2,9 +2,9 @@
 @section("content")
     <div class="card">
         <div class="d-flex justify-content-between align-items-center card-header">
-            <h5 class="mb-0">اخبار</h5>
+            <h5 class="mb-0">کالکشن ها</h5>
             <a href="{{ route('collection.create') }}" class="btn btn-primary">
-                <i class="ti ti-plus me-1"></i> افزودن خبر
+                <i class="ti ti-plus me-1"></i> افزودن کالکشن ها
             </a>
         </div>
 
@@ -14,12 +14,12 @@
                 <tr>
                     <th>تصویر</th>
                     <th>عنوان</th>
-                    <th>فیلم ها</th>
+                    <th>فیلم</th>
                     <th>عملیات</th>
                 </tr>
                 </thead>
                 <tbody class="table-border-bottom-0">
-                @forelse($collections as $collection)
+                @forelse($colletions as $collection)
                     <tr>
                         <td>
                             @if($collection->image)
@@ -40,15 +40,15 @@
                                     <i class="ti ti-dots-vertical"></i>
                                 </button>
                                 <div class="dropdown-menu">
-                                    <a class="dropdown-item" href="{{ route('news.edit', $collection->id) }}">
+                                    <a class="dropdown-item" href="{{ route('collection.edit', $collection->id) }}">
                                         <i class="ti ti-pencil me-1"></i> ویرایش
                                     </a>
-                                    <form action="{{ route('news.destroy', $collection->id) }}" method="POST"
+                                    <form action="{{ route('collection.destroy', $collection->id) }}" method="POST"
                                           onsubmit="return confirm('آیا از حذف این خبر مطمئن هستید؟')">
                                         @csrf
                                         @method('DELETE')
                                         <button type="submit" class="dropdown-item text-danger">
-                                            <i class="ti ti-trash me-1"></i> حذف
+                                            <i class="ti ti-trash me-1">حذف</i>
                                         </button>
                                     </form>
                                 </div>
@@ -57,7 +57,7 @@
                     </tr>
                 @empty
                     <tr>
-                        <td colspan="7" class="text-center text-muted py-3">هیچ خبری ثبت نشده است.</td>
+                        <td colspan="7" class="text-center text-muted py-3">هیچ کالکشنی ثبت نشده است.</td>
                     </tr>
                 @endforelse
                 </tbody>

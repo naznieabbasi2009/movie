@@ -3,7 +3,7 @@
     <div class="card">
         <div class="d-flex justify-content-between align-items-center card-header">
             <h5 class="mb-0">افزودن فیلم جدید</h5>
-            <a href="{{ route('Movies.index') }}" class="btn btn-label-secondary">
+            <a href="{{ route('movie.index') }}" class="btn btn-label-secondary">
                 ← بازگشت به لیست
             </a>
         </div>
@@ -19,7 +19,7 @@
             </div>
         @endif
 
-        <form action="{{ route('Movie.store') }}"
+        <form action="{{ route('movie.store') }}"
               method="POST"
               enctype="multipart/form-data"
               class="p-4">
@@ -109,7 +109,7 @@
 
             <div class="d-flex gap-2 pt-3 border-top">
                 <button type="submit" class="btn btn-primary">ذخیره</button>
-                <a href="{{ route('Movie.index') }}" class="btn btn-label-secondary">انصراف</a>
+                <a href="{{ route('movie.index') }}" class="btn btn-label-secondary">انصراف</a>
             </div>
         </form>
     </div>

@@ -7,7 +7,7 @@
     <!-- Browser Default -->
     <div class="col-md mb-4 mb-md-0">
         <div class="card">
-            <h5 class="card-header">ویرایش دسته بندی فیلم</h5>
+            <h5 class="card-header">ویرایش بازیگران</h5>
             <div class="card-body">
                 <form class="browser-default-validation" enctype="multipart/form-data" method="post" action="{{route('casts.update' , $Casts->id)}}">
                     @method('PUT')

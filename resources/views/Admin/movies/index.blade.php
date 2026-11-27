@@ -8,7 +8,7 @@
     <div class="card">
         <div class="d-flex justify-content-between align-items-center card-header">
             <h5 class="mb-0">فیلم‌ها</h5>
-            <a href="{{ route('Movie.create') }}" class="btn btn-primary">
+            <a href="{{ route('movie.create') }}" class="btn btn-primary">
                 <i class="ti ti-plus me-1"></i> افزودن فیلم
             </a>
         </div>
@@ -63,10 +63,10 @@
                                     <i class="ti ti-dots-vertical"></i>
                                 </button>
                                 <div class="dropdown-menu">
-                                    <a class="dropdown-item" href="{{ route('movies.edit', $movie->id) }}">
+                                    <a class="dropdown-item" href="{{ route('movie.edit', $movie->id) }}">
                                         <i class="ti ti-pencil me-1"></i> ویرایش
                                     </a>
-                                    <form action="{{ route('movies.destroy', $movie->id) }}" method="POST" onsubmit="return confirm('آیا از حذف فیلم مطمئن هستید؟')">
+                                    <form action="{{ route('movie.destroy', $movie->id) }}" method="POST" onsubmit="return confirm('آیا از حذف فیلم مطمئن هستید؟')">
                                         @csrf
                                         @method('DELETE')
                                         <button type="submit" class="dropdown-item text-danger">
@@ -84,10 +84,6 @@
                 @endforelse
                 </tbody>
             </table>
-        </div>
-
-        <div class="p-3">
-            {{ $movies->links() }}
         </div>
     </div>
 @endsection
